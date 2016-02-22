@@ -2,12 +2,16 @@ package com.ziyidai.www.myretrofitdemo;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.Toast;
 
 import com.google.gson.Gson;
 
 import java.util.logging.Logger;
 
+import retrofit.Call;
+import retrofit.Callback;
 import retrofit.GsonConverterFactory;
+import retrofit.Response;
 import retrofit.Retrofit;
 
 public class MainActivity extends AppCompatActivity {
@@ -26,8 +30,22 @@ public class MainActivity extends AppCompatActivity {
 //        bean = new Gson().fromJson(data.toString(),
 //                RegisterVerifyCode.class);
 
-      Retrofit retrofit =  new Retrofit.Builder().baseUrl("http://api.nuuneoi.com/base/").addConverterFactory(GsonConverterFactory.create()).build();
+        Retrofit retrofit = new Retrofit.Builder().baseUrl("http://api.nuuneoi.com/base/").addConverterFactory(GsonConverterFactory.create()).build();
         service = retrofit.create(User.class);
-        service.getUsers("15613575679");
+        Call<TotalBean> calls = service.getUsers("15613575679");
+        calls.enqueue(new Callback<TotalBean>() {
+
+
+            @Override
+            public void onResponse(Response<TotalBean> response) {
+                Toast.makeText(MainActivity.this,response.message(),Toast.LENGTH_LONG).show();
+            }
+
+            @Override
+            public void onFailure(Throwable t) {
+                Toast.makeText(MainActivity.this,"sb",Toast.LENGTH_LONG).show();
+            }
+        });
+
     }
 }
