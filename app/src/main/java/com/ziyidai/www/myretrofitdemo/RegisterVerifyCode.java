@@ -7,7 +7,7 @@ package com.ziyidai.www.myretrofitdemo;
 public class RegisterVerifyCode {
 	
 	public Data data;
-	
+	public String  haha;
 	public class Data{
 	public String code;  //返回码
 	public String message;  //返回描述信息
