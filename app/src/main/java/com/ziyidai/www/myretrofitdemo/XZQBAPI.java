@@ -1,16 +1,9 @@
 package com.ziyidai.www.myretrofitdemo;
 
 
-import java.util.Map;
-
-import retrofit.Call;
-import retrofit.Callback;
-import retrofit.http.Body;
-import retrofit.http.Field;
-import retrofit.http.FieldMap;
-import retrofit.http.POST;
-import retrofit.http.Part;
-import retrofit.http.Query;
+import retrofit2.Call;
+import retrofit2.http.Body;
+import retrofit2.http.POST;
 
 /**
  * Created by Pony on 2016/2/22.
